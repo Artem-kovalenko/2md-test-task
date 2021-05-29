@@ -1,14 +1,17 @@
 import React from 'react';
-// import { ReactComponent as InstagramIcon } from 'icons/instagram.svg';
+import { ReactComponent as InstagramIcon } from 'icons/instagram-brands.svg';
+import { ReactComponent as FacebookIcon } from 'icons/facebook-f-brands.svg';
+import { ReactComponent as TwitterIcon } from 'icons/twitter-brands.svg';
 
 export const FooterComponent = () => {
 
   const classes = {
-    footer: 'h-48 w-full bg-blue-400 absolute left-0 bottom-0 text-white flex justify-between',
-    informationWrapper: 'flex w-3/6 justify-around pt-16',
-    networksWrapper: 'flex text-center justify-center items-center w-2/6',
+    footer: 'h-48 w-full bg-blue-dark absolute left-0 bottom-0 text-white flex justify-between pt-16 pr-16',
+    informationWrapper: 'flex w-3/6 justify-around',
+    networksWrapper: 'flex justify-around items-start w-44',
     informationHeading: 'uppercase text-xs mb-5',
-    informationText: 'text-sm'
+    informationText: 'text-sm',
+    footerIcon: 'h-5'
   };
 
   const currentDate = new Date().toISOString().slice(0, 10);
@@ -33,10 +36,9 @@ export const FooterComponent = () => {
         </div>
       </div>
       <div className={classes.networksWrapper}>
-        {/*<InstagramIcon/>*/}
-        <p>inst</p>
-        <p>tweet</p>
-        <p>facebook</p>
+        <InstagramIcon className={classes.footerIcon}/>
+        <TwitterIcon className={classes.footerIcon}/>
+        <FacebookIcon className={classes.footerIcon}/>
       </div>
     </div>
   );

@@ -1,0 +1,1 @@
+export { CarouselComponent } from 'components/carousel/carousel.component';

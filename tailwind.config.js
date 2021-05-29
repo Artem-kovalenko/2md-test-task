@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors');
+const flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').default;
 
 module.exports = {
   purge: ['./src/**/*.{js,jsx}', './public/index.html'],
@@ -22,10 +23,15 @@ module.exports = {
       red: colors.red,
       yellow: colors.amber,
       green: colors.emerald,
-      blue: colors.blue,
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      blue: {
+        'light-100': '#f1f9ff',
+        'light-300': '#bce0fd',
+        'light-500': '#7fc4fd',
+        dark: '#2699fb'
+      }
     },
     spacing: {
       px: '1px',
@@ -154,6 +160,8 @@ module.exports = {
       2: '2px',
       4: '4px',
       8: '8px',
+      58: '58px',
+      100: '100px'
     },
     boxShadow: {
       sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
@@ -635,8 +643,13 @@ module.exports = {
       6: '6deg',
       12: '12deg',
       45: '45deg',
+      60: '60deg',
       90: '90deg',
+      120: '120deg',
       180: '180deg',
+      240: '240deg',
+      300: '300deg',
+      360: '360deg',
     },
     saturate: {
       0: '0',
@@ -649,6 +662,7 @@ module.exports = {
       0: '0',
       50: '.5',
       75: '.75',
+      80: '.8',
       90: '.9',
       95: '.95',
       100: '1',
@@ -959,5 +973,21 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
-  plugins: [],
+  plugins: [
+    ({ addUtilities, theme, variants }) => {
+      const colors = flattenColorPalette(theme('borderColor'));
+      delete colors['default'];
+
+      const colorMap = Object.keys(colors)
+        .map(color => ({
+          [`.border-t-${color}`]: {borderTopColor: colors[color]},
+          [`.border-r-${color}`]: {borderRightColor: colors[color]},
+          [`.border-b-${color}`]: {borderBottomColor: colors[color]},
+          [`.border-l-${color}`]: {borderLeftColor: colors[color]},
+        }));
+      const utilities = Object.assign({}, ...colorMap);
+
+      addUtilities(utilities, variants('borderColor'));
+    },
+  ],
 };
