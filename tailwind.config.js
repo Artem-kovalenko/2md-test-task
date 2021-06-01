@@ -7,11 +7,12 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
-      '2xl': '1536px',
+      's': {'min': '0px', 'max': '639px'},
+      'sm': {'min': '640px', 'max': '767px'},
+      'md': {'min': '768px', 'max': '1023px'},
+      'lg': {'min': '1024px', 'max': '1279px'},
+      'xl': {'min': '1280px', 'max': '1535px'},
+      '2xl': {'min': '1536px'},
     },
     colors: {
       transparent: 'transparent',
@@ -271,6 +272,8 @@ module.exports = {
       ],
     },
     fontSize: {
+      '3xs': ['0.25rem', { lineHeight: '0.5rem' }],
+      '2xs': ['0.625rem', { lineHeight: '1rem' }],
       xs: ['0.75rem', { lineHeight: '1rem' }],
       sm: ['0.875rem', { lineHeight: '1.25rem' }],
       base: ['1rem', { lineHeight: '1.5rem' }],
@@ -857,7 +860,7 @@ module.exports = {
     backgroundSize: ['responsive'],
     blur: ['responsive'],
     borderCollapse: ['responsive'],
-    borderColor: ['responsive', 'dark', 'group-hover', 'focus-within', 'hover', 'focus'],
+    borderColor: ['responsive', 'dark', 'group-hover', 'focus-within', 'hover', 'focus', 'active'],
     borderOpacity: ['responsive', 'dark', 'group-hover', 'focus-within', 'hover', 'focus'],
     borderRadius: ['responsive'],
     borderStyle: ['responsive'],
@@ -953,7 +956,7 @@ module.exports = {
     strokeWidth: ['responsive'],
     tableLayout: ['responsive'],
     textAlign: ['responsive'],
-    textColor: ['responsive', 'dark', 'group-hover', 'focus-within', 'hover', 'focus'],
+    textColor: ['responsive', 'dark', 'group-hover', 'focus-within', 'hover', 'focus', 'active'],
     textDecoration: ['responsive', 'group-hover', 'focus-within', 'hover', 'focus'],
     textOpacity: ['responsive', 'dark', 'group-hover', 'focus-within', 'hover', 'focus'],
     textOverflow: ['responsive'],
